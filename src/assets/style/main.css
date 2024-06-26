@@ -1,0 +1,168 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Anybody:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  --primary: #CDE8E5;
+  --secondary: #EEF7FF;
+  --tertiary: #7AB2B2;
+  --quaternary: #4D869C;
+  --active: #051EFF;
+  --button: #5C4FEC;
+}
+
+body {
+  background-color: var(--primary);
+  padding: 0;
+  margin: 0;
+  
+}
+
+#app {
+  font-family: "Inter","Istok Web",   "Anybody";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  
+}
+
+nav {
+  position: fixed;
+  z-index: 100;
+  width: 100%;  
+  height: fit-content;
+  background-color: var(--secondary);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 20px 30px 20px 30px;
+  /* padding: 20px 20px 20px 20px; */
+  /* margin-right: 200px; */
+  column-gap: 80px;
+  font-size: 15px;
+}
+
+nav .dropDown {
+  display: inline-flex;
+  align-items: center;
+  height: fit-content;
+}
+
+nav button {
+  margin: 0px;
+  padding: 0px;
+  font-size: 20px;
+  background: none;
+  color: inherit;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.users {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.users .profile {
+
+  display: flex;
+  align-items: center;
+}
+
+.users .profile:last-child {
+  background-color: var(--tertiary);
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.active {
+  color: var(--active);
+}
+
+nav h1 {
+  font-family: "anybody";
+  font-weight: bold;
+  font-size: 32px;
+  margin: 0px;
+}
+
+/* a.router-link-active.router-link-exact-active {
+  text-decoration: none;
+  color: black;
+} */
+.opacity{
+  color: rgba(0, 0, 0, 0.659);
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+
+.button-19 {
+  appearance: button;
+  box-shadow: 2px 8px 5px rgba(52, 52, 52, 0.651);
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: din-round, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: .8px;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 13px 16px;
+  text-align: center;
+  text-transform: uppercase;
+  touch-action: manipulation;
+  transform: translateZ(0);
+  transition: filter .2s;
+  /* user-select: none; */
+  /* -webkit-user-select: none; */
+  /* vertical-align: middle; */
+  /* white-space: nowrap; */
+  width: 200px;
+}
+
+.button-19:after {
+  /* background-clip: padding-box; */
+  background-color: var(--button);
+  border: solid transparent;
+  border-radius: 16px;
+  border-width: 0 0 4px;
+  bottom: -4px;
+  content: "";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.button-19:main,
+.button-19:focus {
+  user-select: auto;
+}
+
+.button-19:hover:not(:disabled) {
+  filter: brightness(1.1);
+  -webkit-filter: brightness(1.1);
+}
+
+.button-19:disabled {
+  cursor: auto;
+}
+
+.button-19:active {
+  border-width: 4px 0 0;
+  background: none;
+}

@@ -1,0 +1,9 @@
+{
+    "pengacara": [
+      { "id": 1, "nama": "Stephanie William", "rating": 4.5, "review": 231, "lokasi": "Surabaya", "bidangPraktik": ["bisnis", "pembela kriminal", "Kebangkrutan"], "foto": "../src/assets/images/foto1.jpg" },
+      { "id": 2, "nama": "Robert Pattinson", "rating": 4.0, "review": 12, "lokasi": "Jakarta", "bidangPraktik": ["bisnis", "pembela kriminal", "Kebangkrutan"], "foto": "/assets/images/foto2.jpg" },
+      { "id": 3, "nama": "Angela Jolie", "rating": 4.6, "review": 31, "lokasi": "Surakarta", "bidangPraktik": ["bisnis", "pembela kriminal", "Kebangkrutan"], "foto": "/assets/images/foto3.jpg" },
+      { "id": 4, "nama": "Mark Ruffalo", "rating": 3.7, "review": 45, "lokasi": "Jogja", "bidangPraktik": ["bisnis", "pembela kriminal", "Kebangkrutan"], "foto": "/assets/images/foto4.jpg" }
+    ]
+}
+  
