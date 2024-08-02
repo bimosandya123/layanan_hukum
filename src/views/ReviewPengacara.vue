@@ -1,13 +1,13 @@
 <template>
     <Search />
-    <div class="ProfilePengacara" v-if="selectedPengacara">
+    <div class="ReviewPengacara" v-if="selectedPengacara">
         <section class="section1">
             <div class="img" :style="{ backgroundImage: `url(${selectedPengacara.foto})` }">
             </div>
             <div class="profile">
                 <h1>{{ selectedPengacara.nama }}</h1>
                 <p>pengacara di {{ selectedPengacara.firma }}, {{ selectedPengacara.lokasi }}</p>
-                <div class="review"> 
+                <div class="review">
                     <div class="stars">
                         <font-awesome-icon icon="fa-solid fa-star" style="color: #FF7A00;" />
                         <font-awesome-icon icon="fa-solid fa-star" style="color: #FF7A00;" />
@@ -16,10 +16,13 @@
                         <font-awesome-icon icon="fa-solid fa-star" style="color: #FF7A00;" />
                         <p class="opacity">({{ selectedPengacara.review }} Reviews)</p>
                     </div>
-                    Rating
-                    <p class="opacity"> {{ selectedPengacara.rating }} </p>
+                    <p class="opacity">Rating</p>
+                    <strong> {{ selectedPengacara.rating }} </strong>
                 </div>
-                <p>Bidang Praktik</p>
+
+            </div>
+            <div class="bidang">
+                <p>BIDANG PRAKTIK</p>
                 <p class="bidang opacity">{{ bidangPraktikText }}</p>
             </div>
             <div class="button">
@@ -30,7 +33,7 @@
                         <strong class="active">{{ selectedPengacara.number }}</strong>
                     </div>
                 </a>
-                <router-link :to="{ name: 'Message', params: { id: selectedPengacara.id } }">
+                <router-link>
                     <div class="link">
                         <font-awesome-icon icon="envelope"
                             style="--fa-primary-color: #213454; --fa-secondary-color: #213454;" />
@@ -45,57 +48,7 @@
                 </a>
             </div>
         </section>
-        <section class="order">
-            <div class="container">
-                <h4> Berlisensi Selama 15 Tahun</h4>
-                <div class="line"></div>
-                <div class="content">
-                    <div class="lokasi"><font-awesome-icon icon="fa-solid fa-location-dot" /> Lokasi</div>
-                    <div class="case"><font-awesome-icon icon="briefcase" /> Diperoleh</div>
-                    <p class="Surabaya">Surabaya</p>
-                    <p class="tahun">2009</p>
-                </div>
-
-            <router-link class="card" :to="{ name: 'order', params: { id: selectedPengacara.id } }">
-                <button class="button-19" role="button" >order sekarang</button>
-            </router-link>
-            </div>
-        </section>
         <section class="section2">
-            <div class="tentangSaya">
-                <h1>tentangSaya</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam similique eveniet minus. Aperiam
-                    aliquam dolorum aliquid vero sapiente nemo recusandae quia corrupti tempore ducimus! Quis rerum quae
-                    error earum expedita!</p>
-            </div>
-            <div class="pembayaran">
-                <h1>pembayaran</h1>
-                <p class="tarif">tarif</p>
-                <p class="tarifPerJam opacity">tarif Per Jam</p>
-                <p class="harga opacity"> Rp. {{ selectedPengacara.tarif }} </p>
-                <p class="metode">Metode Pembayaran</p>
-                <p class="payment opacity">Cash, Check, Credit Card</p>
-            </div>
-            <div class="pengalaman">
-                <div class="pengalamanKerja">
-                    <h1>Pengalaman Kerja</h1>
-                    <div class="content">
-                        Pengacara Hukum
-                        <p class="opacity">William Wood Law, LLC</p>
-                        <p class="opacity">2019 - present</p>
-                    </div>
-                </div>
-                <div class="pendidikan">
-                    <h1>Pendidikan</h1>
-                    <div class="content" v-for="(n, index) in selectedPengacara.universitas.length" :key="index">
-                        {{ selectedPengacara.universitas[index] }}
-                        <p class="opacity">{{ selectedPengacara.tingkat[index] }}</p>
-                        <p class="opacity">{{ selectedPengacara.tahun[index] }}</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section3">
             <h1>Review</h1>
             <div class="komentar" v-for="Review in Review" :key="Review.id">
                 <div class="foto" :style="{ backgroundImage: `url(${Review.foto})` }"></div>
@@ -112,9 +65,34 @@
                 <p class="opacity tahun">1 year Ago</p>
                 <p class="isi">{{ Review.coment }}</p>
             </div>
-            <router-link class="card" :to="{ name: 'ReviewPengacara', params: { id: selectedPengacara.id } }">
+            <router-link>
                 <p class="view" href="#">view all reviews ></p>
             </router-link>
+        </section>
+        <section class="section3">
+            <p class="header">BERIKAN REVIEW UNTUK PENGACARA</p>
+            <p>Pilih Rating Pengacara Anda</p>
+            <div class="stars">
+                <font-awesome-icon @click="upHere1 = false" v-if="upHere1 || upHere2 || upHere3 || upHere4 || upHere5"
+                    icon="fa-solid fa-star" style="color: #FF7A00;" />
+                <font-awesome-icon @click="upHere1 = true" v-else icon="fa-regular fa-star" />
+                <font-awesome-icon @click="upHere2" v-if="upHere2 || upHere3 || upHere4 || upHere5"
+                    icon="fa-solid fa-star" style="color: #FF7A00;" />
+                <font-awesome-icon @click="upHere2 = true" v-else icon="fa-regular fa-star" />
+                <font-awesome-icon @click="upHere3" v-if="upHere3 || upHere4 || upHere5" icon="fa-solid fa-star"
+                    style="color: #FF7A00;" />
+                <font-awesome-icon @click="upHere3 = true" v-else icon="fa-regular fa-star" />
+                <font-awesome-icon @click="upHere4" v-if="upHere4 || upHere5" icon="fa-solid fa-star"
+                    style="color: #FF7A00;" />
+                <font-awesome-icon @click="upHere4 = true" v-else icon="fa-regular fa-star" />
+                <font-awesome-icon @click="upHere5" v-if="upHere5" icon="fa-solid fa-star" style="color: #FF7A00;" />
+                <font-awesome-icon @click="upHere5 = true" v-else icon="fa-regular fa-star" />
+            </div>
+            <p>Tuliskan Judul</p>
+            <input class="subject" v-model="subject" placeholder="..." />
+            <p>Tuliskan Review anda</p>
+            <textarea class="message" v-model="message" placeholder="masukkan review anda" />
+            <button class="button-19" role="button">Submit</button>
         </section>
     </div>
     <div v-else>
@@ -136,6 +114,11 @@ export default {
     components: { Futer, Search },
     data() {
         return {
+            upHere1: false,
+            upHere2: false,
+            upHere3: false,
+            upHere4: false,
+            upHere5: false,
             PropsId: this.$route.params.id,
             pengacara: [
                 { id: 1, nama: 'Stephanie William', tingkat: ['S1 Hukum', 'S2 Hukum', 'S3 Hukum'], universitas: ['Universitas Ciputra', 'Universitas indonesia', 'ITB'], tahun: ['2018', '2020', '2021'], tarif: 275000, number: '12345678', firma: 'Alexandria', link: 'https://www.youtube.com/watch?v=tgTUtfb0Ok8', rating: 4.5, review: 231, lokasi: 'Surabaya', bidangPraktik: ["bisnis", "pembela kriminal", "Kebangkrutan"], foto: foto1 },
@@ -169,35 +152,33 @@ export default {
 </script>
 
 <style scoped>
-.ProfilePengacara {
-    position: relative;
+.ReviewPengacara {
     margin: 0px;
-    padding: 80px;
+    padding-top: 10px;
 }
 
 .section1 {
-    margin: 150px 0px;
+    margin: 130px 0px 0px 0px;
     padding: 20px;
     display: grid;
     grid-template-columns: 100px 100px 100px 100px;
     grid-template-rows: 80px 80px;
     column-gap: 30px;
     row-gap: 15px;
-    background-color: white;
-    border-radius: 20px;
-    width: 100%;
-    height: 400px;
+    background-color: var(--tertiary);
+    height: fit-content;
 }
 
 .img {
-    grid-area: 1 / 1 / 4 / 3;
+    margin: 0px 40px;
+    grid-area: 1 / 1 / 3 / 3;
     background-size: cover;
     background-position: center;
 }
 
 
 .button {
-    grid-area: 4 / 1 / 4 / 6;
+    grid-area: 2 / 6 / 3 / 6;
     display: flex;
     flex-direction: row;
     justify-content: start;
@@ -205,7 +186,20 @@ export default {
     font-size: 20px;
 }
 
+.profile {
+    display: flex;
+    grid-area: 1 / 3 / 3 / 6;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.bidang {
+    font-size: 16px;
+    grid-area: 1 / 6 / 2 / 6;
+}
+
 .button .link {
+    background-color: var(--secondary);
     width: 150px;
     display: flex;
     justify-content: center;
@@ -219,16 +213,6 @@ export default {
     margin-left: 5px;
 }
 
-.profile {
-    grid-area: 1 / 3 / 3 / 6;
-    flex-direction: column;
-    justify-content: unsafe;
-}
-
-.profile .bidang {
-    font-size: 16px;
-}
-
 .profile .review {
     display: flex;
     padding: 0px;
@@ -239,11 +223,11 @@ export default {
 .profile .review .stars {
     display: flex;
     align-items: baseline;
-    margin-right: 50px;
+    margin-right: 0px;
 }
 
 .profile .review p {
-    margin-left: 10px;
+    margin: 0px 10px;
     font-size: 12px;
 }
 
@@ -253,147 +237,27 @@ export default {
     /* background-color: red; */
 }
 
-/* ========================== order ========================== */
-.order {
-    /* background-color: red; */
-    padding-top: 120px;
-    /* padding-bottom: -100px; */
-    /* margin-bottom: 200px; */
-    top: 0;
-    position: sticky;
-    z-index: 0;
-    float: right;
-}
-
-.order .container {
-    background-color: white;
-    box-shadow: 5px 10px 15px rgba(52, 52, 52, 0.651);
-    /* height: 100px; */
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-    border-radius: 20px;
-    border-style: solid;
-    display: flex;
-    flex-direction: column;
-    padding: 10px 0px;
-    padding-bottom: 20px;
-
-}
-
-.order .container .content {
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto;
-    display: grid;
-    column-gap: 20px;
-}
-
-.order .container .content .lokasi {
-    grid-area: 1 / 1 / 1 / 1;
-    /* background-color: red; */
-    align-self: center;
-}
-
-.order .container .content .case {
-    grid-area: 2 / 1 / 2 / 1;
-    /* background-color: red; */
-    align-self: center;
-}
-
-.order .container .content .tahun {
-    grid-area: 2 / 2 / 2 / 2;
-    /* background-color: red; */
-}
-
-.order .container .line {
-    border-style: solid;
-    border-width: 1px;
-    width: 100%;
-    border-color: rgba(0, 0, 0, 0.263);
-}
-
-
-/* ========================== SECTION 2 ========================== */
+/*================ SECTION 2 ==================*/
 .section2 {
-    margin: 150px 0px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 20px;
-    width: 100%;
-    height: fit-content;
+    margin: 0px;
+    padding: 100px;
 }
 
-.section2 div {
-    width: 60%;
-}
-
-.section2 .pembayaran {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto;
-    column-gap: 10px;
-    row-gap: 0px;
-}
-
-.section2 .pembayaran .tarif {
-
-    grid-area: 2 / 1 / 2 / 1;
-}
-
-.section2 .pembayaran .tarifPerJam {
-    grid-area: 3 / 1 / 3 / 1;
-}
-
-.section2 .pembayaran .harga {
-    grid-area: 3 / 2 / 3 / 2;
-}
-
-.section2 .pembayaran .metode {
-    grid-area: 2 / 3 / 2 / 3;
-}
-
-.section2 .pembayaran .payment {
-    grid-area: 3 / 3 / 3 / 3;
-}
-
-.section2 .pengalaman {
-    display: flex;
-    flex-direction: row;
-    column-gap: 10px;
-}
-
-.section2 .pengalaman .pendidikan {
-    min-width: max-content;
-    max-width: 250px;
-    margin-right: 0px;
-}
-
-.section2 .pengalaman .pendidikan .content {
-    width: 100%;
-}
-/*================ SECTION 3 ==================*/
-.section3 {
-    margin: 150px 0px;
-    margin-bottom: 50px;
-    padding: 20px;
-    width: 100%;
-}
-
-.section3 .komentar {
+.section2 .komentar {
     padding: 50px;
     display: grid;
-    grid-template-columns: 100px 50% auto;
+    grid-template-columns: 100px 100% auto;
     grid-template-rows: 10px 10px 20px auto;
     column-gap: 30px;
     row-gap: 10px;
 }
 
-.section3 .view {
+.section2 .view {
     color: var(--active);
     text-align: center;
 }
 
-.section3 .komentar .foto {
+.section2 .komentar .foto {
     column-gap: 10px;
     grid-area: 1 / 1 / 1 / 1;
     border-radius: 50%;
@@ -403,24 +267,42 @@ export default {
     background-position: center;
 }
 
-.section3 .komentar .nama {
+.section2 .komentar .nama {
     grid-area: 1 / 2 / 1 / 2;
     /* background-color: red; */
 
 }
 
-.section3 .komentar .stars {
+.section2 .komentar .stars {
     /* background-color: red; */
     grid-area: 2 / 2 / 2 / 3;
     display: flex;
     align-items: baseline;
 }
 
-.section3 .komentar .tahun {
+.section2 .komentar .tahun {
     grid-area: 3 / 2 / 3 / 2;
 }
 
-.section3 .komentar .isi {
+.section2 .komentar .isi {
     grid-area: 4 / 2 / 4 / 2;
 }
+/*================ SECTION 3 ==================*/
+.section3{
+    margin: 0px;
+    padding: 50px 300px;
+    background-color: var(--tertiary);
+
+}
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+  }
 </style>

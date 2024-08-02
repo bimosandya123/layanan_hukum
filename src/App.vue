@@ -7,9 +7,9 @@
       <img v-else src=".\assets\Iconly\Arrow-inactive.png" class="icon">
     </div>
     <div class="users">
-      <router-link :to="{ name: '' }" class="message profile">
+      <router-link :to="{ name: 'Notif' }" class="message profile">
         <img src=".\assets\Iconly\Notification.svg" alt="">
-        message</router-link>
+        </router-link>
       <router-link :to="{ name: 'Message' }" class="message profile">
         <img src=".\assets\Iconly\Message.svg" alt="">
         message</router-link>

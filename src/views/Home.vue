@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <div class="section1">
+    <div class="section1 h-screen">
       <div class="content">
         <h1>PENGACARA BERPENGALAMAN SIAP MEMBANTU.</h1>
         <div class="input-container">
@@ -29,7 +29,6 @@
             <div class="pengacara">
               <div class="profile">
                 <div class="img" :style="{ backgroundImage: `url(${pengacara.foto})` }"></div>
-                <!-- <img :src="pengacara.foto" :alt="pengacara.nama" height="200px" width="160px"/> -->
                 <div class="detailsProfile">
                   <p>{{ pengacara.nama }}</p>
                   <div class="review">
@@ -123,7 +122,7 @@ export default {
 }
 
 .section1 {
-  height: 300px;
+  /* height: 500px; */
   padding: 200px 100px 100px 100px;
 }
 

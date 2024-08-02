@@ -1,13 +1,13 @@
 <template>
     <Search />
     <div class="searchPengacara">
-        <div class="section1">
+        <section class="section1">
             <h1>SURABAYA, PENGACARA DI BIDANG KEBANGKRUTAN</h1>
             <p>544 pengacara yang berspesialisasi dalam Kebangkrutan tersedia di wilayah Beverly Hills, CA.
                 Bandingkan pengacara Kebangkrutan terbaik di dekat Anda dan buat keputusan berdasarkan 1479+ ulasan dan
                 profil pengacara terperinci.</p>
-        </div>
-        <div class="section2">
+        </section> 
+        <section class="section2">
             <div v-for="Pengacara in Pengacara" :key="Pengacara.id">
                 <router-link class="card" :to="{ name: 'ProfilePengacara', params: { id: Pengacara.id } }">
                     <div class="foto" :style="{ backgroundImage: `url(${Pengacara.foto})` }"></div>
@@ -60,7 +60,8 @@
                     </div>
                 </router-link>
             </div>
-        </div>
+        </section>
+        
 
         <router-view />
     </div>
